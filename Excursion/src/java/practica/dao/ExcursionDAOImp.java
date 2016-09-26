@@ -61,7 +61,7 @@ public class ExcursionDAOImp implements ExcursionDAO {
                     + "actividad =?,"
                     + "transporte =?,"
                     + "hotel = ?"
-                    + "WHERE id_Excursion =?";
+                    + "WHERE id_excursion =?";
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, excursion.getDestino());
             ps.setString(2, excursion.getActividad());
@@ -83,13 +83,13 @@ public class ExcursionDAOImp implements ExcursionDAO {
         Excursion excursion = null;
 
         try {
-            String query = "SELECT * FROM excursiones WHERE id_Excursion = ?";
+            String query = "SELECT * FROM excursiones WHERE id_excursion = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, idExcursion);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
                 excursion = new Excursion(
-                        rs.getInt("id_Excursion"), rs.getString("destino"), rs.getString("actividad"), rs.getString("transporte"), rs.getString("hotel"));
+                        rs.getInt("id_excursion"), rs.getString("destino"), rs.getString("actividad"), rs.getString("transporte"), rs.getString("hotel"));
 
             }
             rs.close();
@@ -111,7 +111,7 @@ public class ExcursionDAOImp implements ExcursionDAO {
                     "SELECT * FROM excursiones");
             while (rs.next()) {
                 Excursion excursion = new Excursion(
-                        rs.getInt("id_Excursion"), rs.getString("destino"), rs.getString("actividad"), rs.getString("transporte"), rs.getString("hotel"));
+                        rs.getInt("id_excursion"), rs.getString("destino"), rs.getString("actividad"), rs.getString("transporte"), rs.getString("hotel"));
                 excursiones.add(excursion);
             }
             rs.close();
